@@ -2891,6 +2891,8 @@ GameObject:
   - component: {fileID: 1798141884}
   - component: {fileID: 1798141886}
   - component: {fileID: 1798141885}
+  - component: {fileID: 1798141887}
+  - component: {fileID: 1798141889}
   m_Layer: 0
   m_Name: Hand
   m_TagString: Untagged
@@ -2975,6 +2977,33 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &1798141887
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1798141882}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62aa31c9397fbc04eb7ce0062a448c34, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pickUpSound: {fileID: 8300000, guid: 3b93b89b65a4dc74cba0ff123dae14ef, type: 3}
+--- !u!114 &1798141889
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1798141882}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 923d949210b7eee478bcbee53c167605, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioSource: {fileID: 0}
+  cuackSound: {fileID: 8300000, guid: bb8251d83b184f64abaa6950c7b717bd, type: 3}
 --- !u!4 &1835840273 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3767285851792035467, guid: c437a6d9c4c0a3142afedb3b8e5d5466, type: 3}
