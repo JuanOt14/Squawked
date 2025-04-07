@@ -3,7 +3,8 @@ guid: bd2ecaf5a19b91540b6718141129fc9d
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - victoriaAudio: {fileID: 8300000, guid: b1f4476af5d87fb4fa8135f1dcc9f987, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
