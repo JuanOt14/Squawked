@@ -1,10 +1,11 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Cable : MonoBehaviour
 {
     public SpriteRenderer wireEnd;
+    public AudioClip errorSound; // 🔊 Sonido de error cuando la conexión es incorrecta
+    private AudioSource audioSource;
     private Vector3 startPoint;
     private Vector3 startPosition;
     private Victoria victoria;
@@ -15,6 +16,14 @@ public class Cable : MonoBehaviour
         startPoint = transform.parent.position;
         startPosition = transform.parent.position;
         victoria = transform.root.gameObject.GetComponent<Victoria>();
+        
+        // Configurar el AudioSource
+        audioSource = GetComponent<AudioSource>();
+        if (audioSource == null)
+        {
+            audioSource = gameObject.AddComponent<AudioSource>();
+            audioSource.playOnAwake = false;
+        }
     }
 
     private void OnMouseDrag()
@@ -41,6 +50,10 @@ public class Cable : MonoBehaviour
                 {
                     victoria.conexionesVictoria++;
                     victoria.ComprobarVictoria();
+                }
+                else
+                {
+                    ReproducirError(); // 🔊 Reproducir sonido si es incorrecto
                 }
                 return;
             }
@@ -73,5 +86,13 @@ public class Cable : MonoBehaviour
 
         float dist = direction.magnitude; // Obtener la distancia real
         wireEnd.size = new Vector2(dist, wireEnd.size.y); // Ajustar tamaño correctamente
+    }
+    
+    void ReproducirError()
+    {
+        if (errorSound != null && audioSource != null)
+        {
+            audioSource.PlayOneShot(errorSound);
+        }
     }
 }
