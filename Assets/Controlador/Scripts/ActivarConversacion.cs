@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class ActivarConversacion : MonoBehaviour
 {
-    public AudioSource audioSource; // Componente AudioSource para reproducir el audio
-    public AudioClip conversacion1A; // Clip de audio de la conversación entre los NPCs
+    public AudioClip[] conversaciones; // Array de clips de audio para las conversaciones
     public GameObject npc1; // Referencia al primer NPC
     public GameObject npc2; // Referencia al segundo NPC
     public float rangoActivacion = 3f; // Distancia máxima para activar la conversación
@@ -16,7 +15,7 @@ public class ActivarConversacion : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetMouseButtonDown(0) && !audioEnProgreso && reproduccionesActuales < maxReproducciones)
+        if (Input.GetMouseButtonDown(1) && !audioEnProgreso && reproduccionesActuales < maxReproducciones)
         {
             Debug.Log("Clic izquierdo detectado.");
 
@@ -39,23 +38,34 @@ public class ActivarConversacion : MonoBehaviour
 
     void IniciarConversacion()
     {
-        if (conversacion1A != null && audioSource != null)
+        // Verifica que ambos NPCs tengan un AudioSource
+        AudioSource audioSourceNpc1 = npc1.GetComponent<AudioSource>();
+        AudioSource audioSourceNpc2 = npc2.GetComponent<AudioSource>();
+
+        if (conversaciones.Length > 0 && audioSourceNpc1 != null && audioSourceNpc2 != null)
         {
             Debug.Log("Iniciando conversación entre los NPCs.");
-            audioSource.clip = conversacion1A;
-            audioSource.Play();
+
+            // Selecciona un clip de audio aleatorio
+            AudioClip audioSeleccionado = conversaciones[Random.Range(0, conversaciones.Length)];
+
+            // Reproduce el audio desde el NPC1
+            audioSourceNpc1.clip = audioSeleccionado;
+            audioSourceNpc1.Play();
+
             audioEnProgreso = true;
             reproduccionesActuales++;
 
-            StartCoroutine(EsperarFinDeAudio());
+            // Espera a que termine el audio antes de permitir otra reproducción
+            StartCoroutine(EsperarFinDeAudio(audioSourceNpc1));
         }
         else
         {
-            Debug.LogWarning("AudioSource o AudioClip no asignado.");
+            Debug.LogWarning("No hay clips de audio asignados o falta un AudioSource en uno de los NPCs.");
         }
     }
 
-    IEnumerator EsperarFinDeAudio()
+    IEnumerator EsperarFinDeAudio(AudioSource audioSource)
     {
         // Espera la duración del audio antes de permitir otra reproducción
         yield return new WaitForSeconds(audioSource.clip.length);
