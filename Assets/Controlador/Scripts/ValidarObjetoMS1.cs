@@ -1,52 +1,45 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement; // Necesario para manejar escenas
 
-public class ValidarObjeto : MonoBehaviour
+public class ValidarObjetoConCanvas : MonoBehaviour
 {
     public string objetoCorrecto = "key2"; // Nombre del objeto correcto
-    public GameObject ventanaFelicidadesPrefab; // Prefab de la ventana de felicitaciones
-    public GameObject ventanaErrorPrefab; // Prefab de la ventana de error
-    public float duracionVentana = 7f; // Duración de las ventanas emergentes
+    public string escenarioCorrecto = "CompletarMS"; // Nombre del escenario para el caso correcto
+    public string escenarioIncorrecto = "IncorrectoMS"; // Nombre del escenario para el caso incorrecto
+    public string escenarioMision = "Mision123"; // Nombre del escenario actual de la misión
+    public float duracionEscenario = 2f; // Duración de la visualización del escenario
 
     private void OnTriggerEnter(Collider other)
     {
-        // Verifica si el objeto que entra al trigger es el correcto
+        // Verifica si el objeto que entra al trigger es un objeto interactivo
         if (other.CompareTag("Objeto"))
         {
             if (other.gameObject.name == objetoCorrecto)
             {
                 Debug.Log("Objeto correcto entregado.");
-                MostrarVentana(ventanaFelicidadesPrefab);
+                StartCoroutine(CambiarEscenario(escenarioCorrecto, other.gameObject)); // Cambia al escenario correcto
             }
             else
             {
                 Debug.Log("Objeto incorrecto entregado.");
-                MostrarVentana(ventanaErrorPrefab);
+                StartCoroutine(CambiarEscenario(escenarioIncorrecto, other.gameObject)); // Cambia al escenario incorrecto
             }
-
-            // Destruye el objeto entregado
-            Destroy(other.gameObject);
         }
     }
 
-    private void MostrarVentana(GameObject ventanaPrefab)
+    private IEnumerator CambiarEscenario(string nuevoEscenario, GameObject objeto)
     {
-        // Instancia el prefab de la ventana
-        GameObject ventana = Instantiate(ventanaPrefab, transform.position, Quaternion.identity);
+        // Destruye el objeto entregado
+        Destroy(objeto);
 
-        // Asegúrate de que la ventana esté en el Canvas si es necesario
-        if (ventana.GetComponent<Canvas>() != null)
-        {
-            ventana.transform.SetParent(GameObject.Find("Canvas").transform, false);
-        }
+        // Carga el escenario correspondiente
+        SceneManager.LoadScene(nuevoEscenario);
 
-        // Inicia la corrutina para desactivar la ventana después de un tiempo
-        StartCoroutine(DesactivarVentana(ventana));
-    }
+        // Espera la duración del escenario
+        yield return new WaitForSeconds(duracionEscenario);
 
-    private IEnumerator DesactivarVentana(GameObject ventana)
-    {
-        yield return new WaitForSeconds(duracionVentana);
-        Destroy(ventana); // Destruye la ventana después de la duración
+        // Regresa al escenario de la misión
+        SceneManager.LoadScene(escenarioMision);
     }
 }
