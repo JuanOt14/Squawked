@@ -1,3 +1,4 @@
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -32,7 +33,7 @@ public class ControlTutorial : MonoBehaviour
                 Destroy(other.gameObject);
 
                 // Carga la siguiente escena
-                SceneManager.LoadScene("01 - Mision04");
+                SceneManager.LoadScene("Mision123"); // Cambia al escenario especificado
             }
             else
             {
