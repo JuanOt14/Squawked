@@ -9,6 +9,9 @@ EditorBuildSettings:
     path: Assets/Vista/Scenes/00 - Menu.unity
     guid: 18ea09caed6a540429e23c4ba0c02b0a
   - enabled: 1
+    path: Assets/Vista/Scenes/Intro.unity
+    guid: bacff6adf564a654c971c1ad0c57a77b
+  - enabled: 1
     path: Assets/Vista/Scenes/Tutorial.unity
     guid: cee28815b96a11b4191249e5df93e99f
   - enabled: 1
