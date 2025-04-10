@@ -28,7 +28,7 @@ public class Puerta : MonoBehaviour
             Debug.Log("Si esta haciendo lo que necesito");
 
             Destroy(gameObject);
-            SceneManager.LoadScene("Mision 123");
+            SceneManager.LoadScene("Mision123");
         }
 
     }

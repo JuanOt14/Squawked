@@ -1,36 +1,44 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class ControlTutorial : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    // Nombre del objeto requerido para activar la puerta
+    public string requiredObjectName = "Key"; 
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    // Bandera para verificar si el jugador está llevando el objeto correcto
+    private bool isCarryingRequiredObject = false;
 
+    // Método que se ejecuta cuando otro objeto entra en el trigger
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Pato")
+        // Si el objeto que entra tiene el tag "Pato"
+        if (other.CompareTag("Pato"))
         {
             Debug.Log("Trae el objeto");
         }
-        if (other.tag == "Objeto")
+
+        // Si el objeto que entra tiene el tag "Objeto"
+        if (other.CompareTag("Objeto"))
         {
-            Debug.Log("Si esta haciendo lo que necesito");
+            // Verifica si el objeto que entra al trigger es el requerido
+            if (other.gameObject.name == requiredObjectName)
+            {
+                Debug.Log("Si está haciendo lo que necesito");
 
-            Destroy(gameObject);
-            SceneManager.LoadScene("02 - Mision4");
+                // Destruye el objeto requerido
+                Destroy(other.gameObject);
+
+                // Carga la siguiente escena
+                SceneManager.LoadScene("01 - Mision04");
+            }
+            else
+            {
+                // Mensaje de depuración si el objeto no es el correcto
+                Debug.Log("Este no es el objeto correcto");
+            }
         }
-
     }
 }
