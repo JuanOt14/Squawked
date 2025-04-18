@@ -25,7 +25,7 @@ public class ControlConversacion : MonoBehaviour
             StartCoroutine(ReproducirConversacion());
         }
     }
-
+    
     private IEnumerator ReproducirConversacion()
     {
         foreach (AudioClip dialogo in dialogos)
