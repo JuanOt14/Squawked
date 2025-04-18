@@ -217,7 +217,7 @@ RectTransform:
   - {fileID: 663307512}
   - {fileID: 1346257053}
   - {fileID: 262796541}
-  m_Father: {fileID: 79743086}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -287,11 +287,6 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
---- !u!4 &79743086 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 2881690676060862453, guid: 36d84a6f33556fa44976043e6171dc38, type: 3}
-  m_PrefabInstance: {fileID: 474205864}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &86299840 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8009987137999418058, guid: e30e1a068eeb0524dbd81b026b49a555, type: 3}
@@ -517,7 +512,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!212 &125088077
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -973,7 +968,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 212401713}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1334510538}
+        m_TargetAssemblyTypeName: ControlPaneles, Assembly-CSharp
+        m_MethodName: VolverAlEscenarioAnterior
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &212401713
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1609,7 +1616,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8553389320661993603, guid: 36d84a6f33556fa44976043e6171dc38, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.34
+      value: 0.61
       objectReference: {fileID: 0}
     - target: {fileID: 8553389320661993603, guid: 36d84a6f33556fa44976043e6171dc38, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1657,9 +1664,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 8553389320661993603, guid: 36d84a6f33556fa44976043e6171dc38, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1568493404}
-    - targetCorrespondingSourceObject: {fileID: 2881690676060862453, guid: 36d84a6f33556fa44976043e6171dc38, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 5940171}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 36d84a6f33556fa44976043e6171dc38, type: 3}
 --- !u!4 &474205865 stripped
@@ -1717,6 +1721,8 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 777bd763c5cf0a64f9934ccd9ecf1a77, type: 3}
   audioSource: {fileID: 912559513}
   panelPrincipal: {fileID: 663307511}
+  iconoEncimaCabeza: {fileID: 125088076}
+  iconoOtroNPC: {fileID: 1112433449}
 --- !u!4 &529948382 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2100208028559941110, guid: f71041fd118fbb34aa9d2dd6a1d96fce, type: 3}
@@ -1993,8 +1999,8 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1089322341}
   - {fileID: 1368317772}
+  - {fileID: 1089322341}
   m_Father: {fileID: 5940171}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -2204,6 +2210,8 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 777bd763c5cf0a64f9934ccd9ecf1a77, type: 3}
   audioSource: {fileID: 912559513}
   panelPrincipal: {fileID: 663307511}
+  iconoEncimaCabeza: {fileID: 1112433449}
+  iconoOtroNPC: {fileID: 125088076}
 --- !u!4 &737598336 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 568985597124981416, guid: 2435736d6adca23458edd7c80c901e3e, type: 3}
@@ -2554,13 +2562,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1851900806}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
+      - m_Target: {fileID: 1334510538}
+        m_TargetAssemblyTypeName: ControlPaneles, Assembly-CSharp
+        m_MethodName: ElegirOpcion
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -2699,7 +2707,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!212 &1112433450
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3469,6 +3477,57 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -2441658414131813105, guid: e30e1a068eeb0524dbd81b026b49a555, type: 3}
+--- !u!1 &1334510537
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1334510539}
+  - component: {fileID: 1334510538}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1334510538
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1334510537}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4446a54bb40dbf4a82537d67ce3551f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  panelPrincipal: {fileID: 663307511}
+  panelOpciones: {fileID: 1346257052}
+  panelResultado: {fileID: 262796540}
+  botonVolverEscenario: {fileID: 212401710}
+  txtMensaje: {fileID: 444120655}
+  escenarioAnterior: Mision5
+  mision6Desbloqueada: 0
+--- !u!4 &1334510539
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1334510537}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 9.060625, y: -9.135961, z: -7.4401674}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1337945218
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3787,7 +3846,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1368317771}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0.0000021448}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -3842,7 +3901,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1368317774}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1334510538}
+        m_TargetAssemblyTypeName: ControlPaneles, Assembly-CSharp
+        m_MethodName: RepetirConversacion
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1368317774
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4540,10 +4611,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 11500000, guid: bbeacff4049055f4c863cf860e2a16ed, type: 3}
-        m_TargetAssemblyTypeName: UnityEngine.Object, UnityEngine
-        m_MethodName: set_name
-        m_Mode: 5
+      - m_Target: {fileID: 1334510538}
+        m_TargetAssemblyTypeName: ControlPaneles, Assembly-CSharp
+        m_MethodName: SeleccionarPato
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -4860,57 +4931,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1162869693}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1851900806
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1851900808}
-  - component: {fileID: 1851900807}
-  m_Layer: 0
-  m_Name: GameObjectScript
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1851900807
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1851900806}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bbeacff4049055f4c863cf860e2a16ed, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  panelPrincipal: {fileID: 663307511}
-  panelOpciones: {fileID: 1346257052}
-  panelResultado: {fileID: 262796540}
-  botonVolverEscenario: {fileID: 212401710}
-  txtMensaje: {fileID: 0}
-  escenarioAnterior: Escenario 5
-  mision6Desbloqueada: 1
---- !u!4 &1851900808
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1851900806}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 560.33856, y: 308.91232, z: 2.8337538}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1852244410
 GameObject:
   m_ObjectHideFlags: 0
@@ -4993,7 +5013,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1852244413}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1334510538}
+        m_TargetAssemblyTypeName: ControlPaneles, Assembly-CSharp
+        m_MethodName: SeleccionarGanso
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1852244413
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5282,4 +5314,5 @@ SceneRoots:
   - {fileID: 1731650866}
   - {fileID: 183967440}
   - {fileID: 474205864}
-  - {fileID: 1851900808}
+  - {fileID: 5940171}
+  - {fileID: 1334510539}

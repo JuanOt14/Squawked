@@ -6,6 +6,8 @@ public class InteraccionNPC : MonoBehaviour
     public AudioClip[] dialogos; // Array de clips de audio para la conversación
     public AudioSource audioSource; // Componente AudioSource para reproducir los audios
     public GameObject panelPrincipal; // Panel que se activa después de la conversación
+    public GameObject iconoEncimaCabeza; // Imagen que aparece encima de la cabeza del NPC
+    public GameObject iconoOtroNPC; // Imagen que aparece encima de la cabeza del otro NPC
 
     private bool interactuable = true;
 
@@ -31,6 +33,18 @@ public class InteraccionNPC : MonoBehaviour
     {
         interactuable = false;
 
+        // Activa el ícono encima de la cabeza del NPC actual
+        if (iconoEncimaCabeza != null)
+        {
+            iconoEncimaCabeza.SetActive(true);
+        }
+
+        // Activa el ícono encima de la cabeza del otro NPC
+        if (iconoOtroNPC != null)
+        {
+            iconoOtroNPC.SetActive(true);
+        }
+
         // Reproduce los audios de la conversación
         foreach (AudioClip dialogo in dialogos)
         {
@@ -45,6 +59,7 @@ public class InteraccionNPC : MonoBehaviour
             panelPrincipal.SetActive(true);
         }
 
-        interactuable = true;
+        // Desactiva la interacción para evitar que se repita la conversación
+        interactuable = false;
     }
 }

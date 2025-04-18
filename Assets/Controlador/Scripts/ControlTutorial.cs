@@ -9,9 +9,6 @@ public class ControlTutorial : MonoBehaviour
     // Nombre del objeto requerido para activar la puerta
     public string requiredObjectName = "Key"; 
 
-    // Bandera para verificar si el jugador está llevando el objeto correcto
-    private bool isCarryingRequiredObject = false;
-
     // Método que se ejecuta cuando otro objeto entra en el trigger
     private void OnTriggerEnter(Collider other)
     {
