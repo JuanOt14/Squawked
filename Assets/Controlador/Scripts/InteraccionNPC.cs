@@ -4,30 +4,30 @@ using UnityEngine;
 public class InteraccionNPC : MonoBehaviour
 {
     public AudioClip[] dialogos; // Array de clips de audio para la conversación
-    public GameObject opcionesUI; // Panel de opciones (Volver a escuchar, Elegir respuesta)
-    public GameObject iconoPato; // Ícono sobre el NPC con el pato
-    public GameObject iconoGanso; // Ícono sobre el NPC con el ganso
+    public AudioSource audioSource; // Componente AudioSource para reproducir los audios
+    public GameObject panelPrincipal; // Panel que se activa después de la conversación
 
-    private AudioSource audioSource;
     private bool interactuable = true;
 
-    private void Start()
+    private void Update()
     {
-        audioSource = GetComponent<AudioSource>();
-        opcionesUI.SetActive(false); // Asegúrate de que las opciones estén ocultas al inicio
-        iconoPato.SetActive(false);
-        iconoGanso.SetActive(false);
-    }
-
-    private void OnMouseDown()
-    {
-        if (interactuable && Input.GetMouseButtonDown(0)) // Clic izquierdo
+        // Detecta el clic derecho del mouse
+        if (Input.GetMouseButtonDown(1)) // Clic derecho
         {
-            StartCoroutine(IniciarConversacion());
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition); // Lanza un rayo desde la posición del mouse
+            if (Physics.Raycast(ray, out RaycastHit hit))
+            {
+                // Verifica si el rayo golpea este NPC
+                if (hit.collider.gameObject == gameObject && interactuable)
+                {
+                    Debug.Log("Interacción con NPC detectada con clic derecho.");
+                    StartCoroutine(ReproducirConversacion());
+                }
+            }
         }
     }
 
-    private IEnumerator IniciarConversacion()
+    private IEnumerator ReproducirConversacion()
     {
         interactuable = false;
 
@@ -39,9 +39,12 @@ public class InteraccionNPC : MonoBehaviour
             yield return new WaitForSeconds(dialogo.length);
         }
 
-        // Muestra las opciones después de la conversación
-        opcionesUI.SetActive(true);
-        iconoPato.SetActive(true);
-        iconoGanso.SetActive(true);
+        // Activa el panel principal después de la conversación
+        if (panelPrincipal != null)
+        {
+            panelPrincipal.SetActive(true);
+        }
+
+        interactuable = true;
     }
 }
