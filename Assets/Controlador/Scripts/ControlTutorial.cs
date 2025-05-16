@@ -1,4 +1,3 @@
-
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,6 +7,21 @@ public class ControlTutorial : MonoBehaviour
 {
     // Nombre del objeto requerido para activar la puerta
     public string requiredObjectName = "Key"; 
+    
+    public HUDmanager featherHUD;
+
+    private void Start()
+    {
+        if (featherHUD == null)
+        {
+            featherHUD = FindObjectOfType<HUDmanager>();
+
+            if (featherHUD == null)
+                Debug.LogError("❌ No se encontró HUDmanager en la escena.");
+            else
+                Debug.Log("✅ HUDmanager asignado automáticamente desde la escena.");
+        }
+    }
 
     // Método que se ejecuta cuando otro objeto entra en el trigger
     private void OnTriggerEnter(Collider other)
@@ -28,6 +42,9 @@ public class ControlTutorial : MonoBehaviour
 
                 // Destruye el objeto requerido
                 Destroy(other.gameObject);
+
+                // Actualiza el HUD
+                GameManager.Instance.AddFeather();
 
                 // Carga la siguiente escena
                 SceneManager.LoadScene("Mision123"); // Cambia al escenario especificado

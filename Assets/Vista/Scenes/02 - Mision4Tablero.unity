@@ -370,7 +370,7 @@ Transform:
   m_GameObject: {fileID: 1285044316}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: -10}
+  m_LocalPosition: {x: 0, y: 1, z: -44.6}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -415,6 +415,14 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 1285044318}
+    - target: {fileID: 307468325484352072, guid: 0332d7b756375db438cc48e28a71c103, type: 3}
+      propertyPath: m_PlaneDistance
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 307468325484352072, guid: 0332d7b756375db438cc48e28a71c103, type: 3}
+      propertyPath: m_UpdateRectTransformForStandalone
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 348903158397554176, guid: 0332d7b756375db438cc48e28a71c103, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: -6
@@ -557,7 +565,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5365563442683851909, guid: 0332d7b756375db438cc48e28a71c103, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 89.62719
+      value: -90
       objectReference: {fileID: 0}
     - target: {fileID: 5365563442683851909, guid: 0332d7b756375db438cc48e28a71c103, type: 3}
       propertyPath: m_LocalRotation.w
