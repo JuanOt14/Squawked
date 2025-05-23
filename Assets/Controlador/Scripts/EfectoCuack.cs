@@ -1,40 +1,41 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class EfectoCuack : MonoBehaviour
 {
     private AudioSource audioSource;
+    private Animator animator;
+
     public AudioClip cuackSound;
 
     void Start()
     {
-        // Intenta obtener el componente AudioSource
         audioSource = GetComponent<AudioSource>();
-
-        // Si no lo tiene, agrégalo automáticamente
         if (audioSource == null)
-        {
             audioSource = gameObject.AddComponent<AudioSource>();
-        }
-        audioSource.playOnAwake = false;
+
+        animator = GetComponentInParent<Animator>();
     }
 
     void Update()
     {
-        // Reproduce el sonido cuando se presiona el clic derecho
-        if (Input.GetMouseButtonDown(1)) 
+        if (Input.GetMouseButtonDown(1))
         {
-            PlayCuackSound();
+            PlayCuack();
         }
     }
 
-    public void PlayCuackSound()
+    public void PlayCuack()
     {
         if (cuackSound != null && audioSource != null)
         {
-            audioSource.Stop(); 
+            audioSource.Stop();
             audioSource.PlayOneShot(cuackSound);
+        }
+
+        if (animator != null)
+        {
+            animator.SetTrigger("isPecking");
         }
     }
 }

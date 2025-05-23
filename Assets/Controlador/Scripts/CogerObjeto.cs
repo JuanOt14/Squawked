@@ -7,11 +7,13 @@ public class CogerObjeto : MonoBehaviour
     public GameObject handPoint;
     private GameObject pickedObject = null;
     private ReproduccionObjeto sonidoManager;
+    private Animator animator;
 
     void Start()
     {
-        // Busca el script ReproduccionObjeto en el mismo GameObject
+        // Obtiene los componentes necesarios
         sonidoManager = GetComponent<ReproduccionObjeto>();
+        animator = GetComponentInParent<Animator>();
     }
 
     void Update()
@@ -26,7 +28,7 @@ public class CogerObjeto : MonoBehaviour
                 pickedObject.transform.SetParent(null);
                 pickedObject = null;
 
-                // Llamar a la función que reproduce el sonido al soltar
+                // Reproducir sonido de soltar
                 if (sonidoManager != null)
                 {
                     sonidoManager.PlayPickUpSound();
@@ -46,11 +48,44 @@ public class CogerObjeto : MonoBehaviour
                         other.transform.SetParent(handPoint.transform);
                         pickedObject = other.gameObject;
 
-                        // Llamar a la función que reproduce el sonido al recoger
+                        // Reproducir animación de recogida
+                        if (animator != null)
+                        {
+                            animator.SetTrigger("isPicking");
+                        }
+
+                        // Reproducir sonido de recoger
                         if (sonidoManager != null)
                         {
                             sonidoManager.PlayPickUpSound();
                         }
+                        Debug.Log("Objeto recogido: " + other.name);
+                        // Si el nombre del objeto es exactamente "gafasrojas", activar el seguimiento
+                        if (other.name == "gafasrojas")
+                        {
+                            Debug.Log("Objeto recogido: gafasrojas → intentando activar seguimiento.");
+
+                            GameObject girl = GameObject.Find("girl_NPC");
+                            if (girl != null)
+                            {
+                                SeguirAlPato seguidor = girl.GetComponent<SeguirAlPato>();
+                                if (seguidor != null)
+                                {
+                                    Debug.Log("Script 'SeguirAlPato' encontrado. Ejecutando ActivarSeguimiento().");
+                                    seguidor.ActivarSeguimiento();
+                                }
+                                else
+                                {
+                                    Debug.LogWarning("No se encontró el componente SeguirAlPato en girl.");
+                                }
+                            }
+                            else
+                            {
+                                Debug.LogWarning("No se encontró el objeto 'girl' en la jerarquía.");
+                            }
+                        }
+
+
                         break; // Detener la búsqueda después de recoger un objeto
                     }
                 }
