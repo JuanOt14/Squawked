@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,6 +7,8 @@ public class EfectoCuack : MonoBehaviour
 {
     private AudioSource audioSource;
     public AudioClip cuackSound;
+
+    public static event Action OnQuack; // Evento global de graznido
 
     void Start()
     {
@@ -33,8 +36,9 @@ public class EfectoCuack : MonoBehaviour
     {
         if (cuackSound != null && audioSource != null)
         {
-            audioSource.Stop(); 
+            audioSource.Stop();
             audioSource.PlayOneShot(cuackSound);
+            OnQuack?.Invoke();
         }
     }
 }
