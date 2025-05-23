@@ -30,7 +30,7 @@ public class ControlTutorial : MonoBehaviour
                 Destroy(other.gameObject);
 
                 // Carga la siguiente escena
-                SceneManager.LoadScene("Mision123"); // Cambia al escenario especificado
+                SceneManager.LoadScene("Mision1"); // Cambia al escenario especificado
             }
             else
             {

@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+
 
 public class CogerObjeto : MonoBehaviour
 {
@@ -20,18 +22,26 @@ public class CogerObjeto : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0)) // Clic izquierdo para recoger/soltar
         {
-            if (pickedObject != null) // Si ya hay un objeto en la mano, soltarlo
+            if (pickedObject != null)
             {
-                Rigidbody rb = pickedObject.GetComponent<Rigidbody>();
-                rb.useGravity = true;
-                rb.isKinematic = false;
-                pickedObject.transform.SetParent(null);
-                pickedObject = null;
-
-                // Reproducir sonido de soltar
-                if (sonidoManager != null)
+                // SOLO permitir soltar si NO estamos en la escena "Mision3"
+                if (SceneManager.GetActiveScene().name != "Mision3")
                 {
-                    sonidoManager.PlayPickUpSound();
+                    Rigidbody rb = pickedObject.GetComponent<Rigidbody>();
+                    rb.useGravity = true;
+                    rb.isKinematic = false;
+                    pickedObject.transform.SetParent(null);
+                    pickedObject = null;
+
+                    // Reproducir sonido de soltar
+                    if (sonidoManager != null)
+                    {
+                        sonidoManager.PlayPickUpSound();
+                    }
+                }
+                else
+                {
+                    Debug.Log("No se puede soltar el objeto en la misión 3.");
                 }
             }
             else // Si no hay objeto en la mano, intentar recoger

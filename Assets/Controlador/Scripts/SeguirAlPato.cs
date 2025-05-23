@@ -29,7 +29,6 @@ public class SeguirAlPato : MonoBehaviour
     {
         if (!debeSeguir)
         {
-            Debug.Log("La NPC todavía no debe seguir al pato.");
             return;
         }
 
