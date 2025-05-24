@@ -16,6 +16,9 @@ public class Cable : MonoBehaviour
         startPoint = transform.parent.position;
         startPosition = transform.parent.position;
         victoria = transform.root.gameObject.GetComponent<Victoria>();
+
+        Debug.Log("Posición inicial: " + startPoint); // ✅ Mensaje de depuración para verificar la posición inicial del cable
+        Debug.Log("Posición de inicio: " + startPosition); // ✅ Mensaje de depuración para verificar la posición de inicio del cable
         
         // Configurar el AudioSource
         audioSource = GetComponent<AudioSource>();
@@ -66,7 +69,7 @@ public class Cable : MonoBehaviour
     {
         conectado = true;
         wireEnd.color = esCorrecto ? Color.green : Color.red; // ✅ Verde si es correcto, ❌ Rojo si es incorrecto
-        Debug.Log(esCorrecto ? "¡Conexión correcta! ✅" : "¡Conexión incorrecta! ❌");
+        //Debug.Log(esCorrecto ? "¡Conexión correcta! ✅" : "¡Conexión incorrecta! ❌");
     }
 
     private void OnMouseUp()
@@ -80,12 +83,12 @@ public class Cable : MonoBehaviour
     void UpdateWire(Vector3 targetPosition)
     {
         transform.position = (startPoint + targetPosition) / 2f; // Centrar la línea
-        Vector2 direction = targetPosition - startPoint;
+        Vector2 direction = targetPosition - startPoint; // Calcular la dirección
         
         transform.right = direction.normalized; // Asegurar que la rotación es uniforme
 
         float dist = direction.magnitude; // Obtener la distancia real
-        wireEnd.size = new Vector2(dist, wireEnd.size.y); // Ajustar tamaño correctamente
+        wireEnd.size = new Vector2(wireEnd.size.y+dist, wireEnd.size.y); // Ajustar tamaño correctamente
     }
     
     void ReproducirError()
