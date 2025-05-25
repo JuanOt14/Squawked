@@ -11,7 +11,7 @@ public class Victoria : MonoBehaviour
     public void ComprobarVictoria(){
         if(conexionesVictoria == 6){
             Destroy(this.gameObject, 1f);
-            SceneManager.LoadScene("00 - Menu");
+            SceneManager.LoadScene("Mision5");
         }
     }
 }

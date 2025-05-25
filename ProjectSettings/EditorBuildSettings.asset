@@ -33,6 +33,12 @@ EditorBuildSettings:
     path: Assets/Vista/Scenes/IncorrectoMS.unity
     guid: 340037da49e831c45a0069131c2940f9
   - enabled: 1
+    path: Assets/Vista/Scenes/Mfinal.unity
+    guid: a0cbdb4cb1c030249a4aeed34548420b
+  - enabled: 1
     path: Assets/Vista/Scenes/Mision5.unity
     guid: 93c596cd0b796ac419746f0ef607d01d
+  - enabled: 1
+    path: Assets/Vista/Scenes/MFTablero.unity
+    guid: 4f24dc4d3cc465d4698ef6f7227b840d
   m_configObjects: {}
