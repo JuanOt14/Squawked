@@ -9,6 +9,20 @@ public class ValidarObjetoConCanvas : MonoBehaviour
     public string escenarioIncorrecto = "IncorrectoMS"; // Nombre del escenario para el caso incorrecto
     public string escenarioMision = "Mision123"; // Nombre del escenario actual de la misión
     public float duracionEscenario = 2f; // Duración de la visualización del escenario
+    public HUDmanager featherHUD;
+
+    private void Start()
+    {
+        if (featherHUD == null)
+        {
+            featherHUD = FindObjectOfType<HUDmanager>();
+
+            if (featherHUD == null)
+                Debug.LogError("❌ No se encontró HUDmanager en la escena.");
+            else
+                Debug.Log("✅ HUDmanager asignado automáticamente desde la escena.");
+        }
+    }
 
     private void OnTriggerEnter(Collider other)
     {
@@ -18,6 +32,8 @@ public class ValidarObjetoConCanvas : MonoBehaviour
             if (other.gameObject.name == objetoCorrecto)
             {
                 Debug.Log("Objeto correcto entregado.");
+                FeatherManager.Instance.AddFeather();
+                featherHUD.UpdateHUD(); // Refresca el HUD después de sumar la pluma
                 StartCoroutine(CambiarEscenario(escenarioCorrecto, other.gameObject)); // Cambia al escenario correcto
             }
             else
