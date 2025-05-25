@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ControlConversacion : MonoBehaviour
 {
@@ -14,10 +15,16 @@ public class ControlConversacion : MonoBehaviour
     [Header("Configuración de Audio")]
     public AudioClip[] dialogos; // Clips de audio para la conversación
     public AudioSource audioSource; // Componente AudioSource para reproducir los audios
+    public AudioClip sonidoAplausos; // Sonido de aplausos para éxito
 
     [Header("Configuración del Jugador")]
     public Transform jugador; // Transform del jugador (el pato)
     public float distanciaRaycast = 10f; // Distancia máxima del Raycast
+
+    [Header("UI y Efectos Visuales")]
+    public GameObject mensajeExito; // Imagen de éxito
+    public GameObject mensajeFracaso; // Imagen de fracaso
+    public GameObject efectoConfeti; // Efecto visual de confeti
 
     private bool enZonaDeActivacion = false; // Indica si el jugador está en la zona de activación
     private bool conversacionTerminada = false; // Indica si la conversación ha terminado
@@ -102,16 +109,40 @@ public class ControlConversacion : MonoBehaviour
             if (hit.collider.gameObject == npc1)
             {
                 Debug.Log("NPC 1 seleccionado. Respuesta incorrecta.");
-                eleccionRealizada = true;
+                MostrarResultado(false); // Fracaso
             }
             else if (hit.collider.gameObject == npc2)
             {
                 Debug.Log("NPC 2 seleccionado. Respuesta correcta.");
-                eleccionRealizada = true;
+                MostrarResultado(true); // Éxito
             }
 
             // Desactiva los íconos y la posibilidad de volver a interactuar con los NPCs
             DesactivarInteraccion();
+        }
+    }
+
+    private void MostrarResultado(bool exito)
+    {
+        if (exito)
+        {
+            // Mostrar mensaje de éxito
+            if (mensajeExito != null) mensajeExito.SetActive(true);
+
+            // Reproducir sonido de aplausos
+            if (sonidoAplausos != null)
+            {
+                audioSource.clip = sonidoAplausos;
+                audioSource.Play();
+            }
+
+            // Activar efecto de confeti
+            if (efectoConfeti != null) efectoConfeti.SetActive(true);
+        }
+        else
+        {
+            // Mostrar mensaje de fracaso
+            if (mensajeFracaso != null) mensajeFracaso.SetActive(true);
         }
     }
 
