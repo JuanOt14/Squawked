@@ -28,7 +28,8 @@ public class ControlConversacion : MonoBehaviour
 
     private bool enZonaDeActivacion = false; // Indica si el jugador está en la zona de activación
     private bool conversacionTerminada = false; // Indica si la conversación ha terminado
-    private bool eleccionRealizada = false; // Indica si ya se hizo una elección
+    private bool eleccionRealizada = false;
+    public bool EleccionRealizada => eleccionRealizada;
 
     public bool ConversacionTerminada
     {
@@ -126,24 +127,28 @@ public class ControlConversacion : MonoBehaviour
     {
         if (exito)
         {
-            // Mostrar mensaje de éxito
             if (mensajeExito != null) mensajeExito.SetActive(true);
-
-            // Reproducir sonido de aplausos
             if (sonidoAplausos != null)
             {
                 audioSource.clip = sonidoAplausos;
                 audioSource.Play();
             }
-
-            // Activar efecto de confeti
             if (efectoConfeti != null) efectoConfeti.SetActive(true);
+
+            StartCoroutine(DesactivarMensajeDespuesDeTiempo(mensajeExito, 6f));
         }
         else
         {
-            // Mostrar mensaje de fracaso
             if (mensajeFracaso != null) mensajeFracaso.SetActive(true);
+
+            StartCoroutine(DesactivarMensajeDespuesDeTiempo(mensajeFracaso, 6f));
         }
+    }
+
+    private IEnumerator DesactivarMensajeDespuesDeTiempo(GameObject mensaje, float segundos)
+    {
+        yield return new WaitForSeconds(segundos);
+        if (mensaje != null) mensaje.SetActive(false);
     }
 
     private void ActivarBorde(GameObject npc, Color color)
@@ -172,5 +177,13 @@ public class ControlConversacion : MonoBehaviour
         if (iconoNPC2 != null) iconoNPC2.SetActive(false);
 
         Debug.Log("Interacción desactivada para ambos NPCs.");
+    }
+
+    public void RealizarSeleccion(bool exito)
+    {
+        if (eleccionRealizada) return;
+        eleccionRealizada = true;
+        MostrarResultado(exito);
+        DesactivarInteraccion();
     }
 }
