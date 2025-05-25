@@ -7,6 +7,8 @@ TagManager:
   - Objeto
   - Flor
   - Pato
+  - NPC1
+  - NPC2
   layers:
   - Default
   - TransparentFX
