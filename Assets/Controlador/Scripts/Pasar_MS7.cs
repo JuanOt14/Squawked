@@ -1,12 +1,11 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class Pasar_MS4 : MonoBehaviour
+public class Pasar_MS7 : MonoBehaviour
 {
     public string nombreEscenario = "01 - Mision04";
-    public ValidarObjetoMS1 validador; // Arrástralo en el Inspector
+    public ValidarObjetoMS1 validador; // Asigna en el Inspector
 
     private void OnTriggerEnter(Collider other)
     {
