@@ -70,10 +70,10 @@ public class CogerObjeto : MonoBehaviour
                             sonidoManager.PlayPickUpSound();
                         }
                         Debug.Log("Objeto recogido: " + other.name);
-                        // Si el nombre del objeto es exactamente "gafasrojas", activar el seguimiento
-                        if (other.name == "gafasrojas")
+                        // Si el nombre del objeto es exactamente "watch_R", activar el seguimiento
+                        if (other.name == "watch_R" || other.name == "watch_Gfbx" || other.name == "watch_AZ")
                         {
-                            Debug.Log("Objeto recogido: gafasrojas → intentando activar seguimiento.");
+                            Debug.Log("Objeto recogido:" + other.name + "→ intentando activar seguimiento.");
 
                             GameObject girl = GameObject.Find("girl_NPC");
                             if (girl != null)

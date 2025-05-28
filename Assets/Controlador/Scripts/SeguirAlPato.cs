@@ -3,6 +3,10 @@ using UnityEngine.AI;
 
 public class SeguirAlPato : MonoBehaviour
 {
+    [Header("Audio de seguimiento")]
+    public AudioClip audioInicioSeguimiento; // Asignar desde el Inspector
+    private AudioSource audioSource;
+
     private GameObject pato;
     private NavMeshAgent agent;
     private Animator animator;
@@ -14,6 +18,14 @@ public class SeguirAlPato : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
         animator = GetComponentInChildren<Animator>();
         pato = GameObject.FindGameObjectWithTag("Pato");
+
+        // Obtener o agregar AudioSource
+        audioSource = GetComponent<AudioSource>();
+        if (audioSource == null)
+        {
+            audioSource = gameObject.AddComponent<AudioSource>();
+        }
+        audioSource.playOnAwake = false;
 
         if (pato == null)
         {
@@ -62,5 +74,12 @@ public class SeguirAlPato : MonoBehaviour
     {
         Debug.Log("Método ActivarSeguimiento() fue llamado.");
         debeSeguir = true;
+
+        // Reproducir audio al iniciar el seguimiento
+        if (audioInicioSeguimiento != null && audioSource != null)
+        {
+            audioSource.clip = audioInicioSeguimiento;
+            audioSource.Play();
+        }
     }
 }
