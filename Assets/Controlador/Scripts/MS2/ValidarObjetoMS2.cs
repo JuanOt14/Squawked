@@ -9,6 +9,9 @@ public class ValidarObjetoMS2 : MonoBehaviour
     public string objetoCorrectoAudio2;
     public string objetoCorrectoAudio3;
 
+    [Header("Referencias de animación")]
+    public CityPeople.CityPeople cityPeople; // Asigna el CityPeople desde el Inspector
+
     public GameObject imagenExito;
     public GameObject imagenError;
     public GameObject confeti;
@@ -54,11 +57,21 @@ public class ValidarObjetoMS2 : MonoBehaviour
                 {
                     objetoEntregadoCorrecto = true;
                     Debug.Log("¡Objeto correcto entregado para el audio!");
+                    // Llama a la animación de festejo
+                    if (cityPeople != null)
+                    {
+                        cityPeople.PlayCelebrationAnimation();
+                    }
                     StartCoroutine(MostrarExito());
                 }
                 else
                 {
                     Debug.Log("Objeto incorrecto entregado para el audio.");
+                    // Llama a la animación de error
+                    if (cityPeople != null)
+                    {
+                        cityPeople.PlayErrorAnimation();
+                    }
                     StartCoroutine(MostrarError());
                 }
             }
