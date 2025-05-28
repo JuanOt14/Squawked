@@ -4,12 +4,12 @@ using UnityEngine.SceneManagement; // Necesario para manejar escenas
 
 public class ValidarObjetoMS2 : MonoBehaviour
 {
-    [Header("Nombres de objetos correctos según el audio")]
+    [Header("Nombres de objetos correctos segï¿½n el audio")]
     public string objetoCorrectoAudio1;
     public string objetoCorrectoAudio2;
     public string objetoCorrectoAudio3;
 
-    [Header("Referencias de animación")]
+    [Header("Referencias de animaciï¿½n")]
     public CityPeople.CityPeople cityPeople; // Asigna el CityPeople desde el Inspector
 
     public GameObject imagenExito;
@@ -30,13 +30,13 @@ public class ValidarObjetoMS2 : MonoBehaviour
     {
         if (!conversacion.conversacionTerminada)
         {
-            Debug.Log("No puedes entregar objetos hasta terminar la conversación.");
+            Debug.Log("No puedes entregar objetos hasta terminar la conversaciï¿½n.");
             return;
         }
 
         if (other.CompareTag("Objeto"))
         {
-            // Validar el objeto según el audio seleccionado
+            // Validar el objeto segï¿½n el audio seleccionado
             if (conversacion.tipoAudioSeleccionado.HasValue)
             {
                 bool objetoCorrectoSegunAudio = false;
@@ -56,8 +56,8 @@ public class ValidarObjetoMS2 : MonoBehaviour
                 if (objetoCorrectoSegunAudio)
                 {
                     objetoEntregadoCorrecto = true;
-                    Debug.Log("¡Objeto correcto entregado para el audio!");
-                    // Llama a la animación de festejo
+                    Debug.Log("ï¿½Objeto correcto entregado para el audio!");
+                    // Llama a la animaciï¿½n de festejo
                     if (cityPeople != null)
                     {
                         cityPeople.PlayCelebrationAnimation();
@@ -67,7 +67,7 @@ public class ValidarObjetoMS2 : MonoBehaviour
                 else
                 {
                     Debug.Log("Objeto incorrecto entregado para el audio.");
-                    // Llama a la animación de error
+                    // Llama a la animaciï¿½n de error
                     if (cityPeople != null)
                     {
                         cityPeople.PlayErrorAnimation();
@@ -77,7 +77,7 @@ public class ValidarObjetoMS2 : MonoBehaviour
             }
             else
             {
-                Debug.LogWarning("No se ha seleccionado ningún audio.");
+                Debug.LogWarning("No se ha seleccionado ningï¿½n audio.");
                 StartCoroutine(MostrarError());
             }
             Destroy(other.gameObject);
@@ -90,6 +90,8 @@ public class ValidarObjetoMS2 : MonoBehaviour
 
         // Llama al ConfetiManager para mostrar el confeti durante 5 segundos
         ConfetiManager.Instance?.MostrarConfeti(5f);
+
+        GameManager.Instance.AddFeather();
 
         yield return new WaitForSeconds(5f);
 

@@ -16,10 +16,11 @@ public class PlayerMove : MonoBehaviour
         float horizontal = Input.GetAxis("Horizontal");
         float vertical = Input.GetAxis("Vertical");
 
-        // Movimiento hacia adelante y atrás
+
+        // Movimiento hacia adelante y atrï¿½s
         transform.Translate(transform.forward * vertical * Time.deltaTime * Speed, Space.World);
 
-        // Rotación lateral
+        // Rotaciï¿½n lateral
         if (Mathf.Abs(horizontal) > 0.01f)
         {
             transform.Rotate(Vector3.up * horizontal * Time.deltaTime * RotationSpeed);
@@ -27,6 +28,6 @@ public class PlayerMove : MonoBehaviour
 
         // Animaciones
         animator.SetBool("isSwimming", vertical > 0.01f); // caminar hacia adelante
-        animator.SetBool("isWalkingBack", vertical < -0.01f); // caminar hacia atrás
+        animator.SetBool("isWalkingBack", vertical < -0.01f); // caminar hacia atrï¿½s
     }
 }

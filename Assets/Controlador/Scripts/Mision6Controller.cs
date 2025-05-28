@@ -52,18 +52,13 @@ public class Mision6Controller : MonoBehaviour
     {
         if (door != null)
             door.SetActive(true);  // Activar la puerta para permitir salir
-
+        
+        GameManager.Instance.AddFeather();
         Debug.Log("Puerta desbloqueada");
     }
 
     void Update()
     {
         
-    }
-
-    void ExitBakery()
-    {
-        // Aquí cargas la siguiente escena o lo que desees
-        SceneManager.LoadScene("NextSceneName");
     }
 }

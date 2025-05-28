@@ -135,6 +135,8 @@ public class ControlConversacion : MonoBehaviour
             }
             if (efectoConfeti != null) efectoConfeti.SetActive(true);
 
+            GameManager.Instance.AddFeather();
+
             StartCoroutine(DesactivarMensajeDespuesDeTiempo(mensajeExito, 6f));
         }
         else
