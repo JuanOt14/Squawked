@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement; // Necesario para manejar escenas
 
 public class Pasar_MS6 : MonoBehaviour
 {
-    public string nombreEscenario = "Tutorial"; // Nombre del escenario al que se cambiará
+    public string nombreEscenario = "Mfinal"; // Nombre del escenario al que se cambiará
 
     private void OnTriggerEnter(Collider other)
     {
