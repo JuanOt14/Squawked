@@ -2933,6 +2933,10 @@ PrefabInstance:
       value: -70.8
       objectReference: {fileID: 0}
     - target: {fileID: 3621752039503614743, guid: 8d294180babbc334ba874b076af92a0e, type: 3}
+      propertyPath: m_Constraints
+      value: 80
+      objectReference: {fileID: 0}
+    - target: {fileID: 3621752039503614743, guid: 8d294180babbc334ba874b076af92a0e, type: 3}
       propertyPath: m_IsKinematic
       value: 0
       objectReference: {fileID: 0}
