@@ -41,4 +41,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Vista/Scenes/MFTablero.unity
     guid: 4f24dc4d3cc465d4698ef6f7227b840d
+  - enabled: 1
+    path: Assets/Vista/Scenes/Mision2.unity
+    guid: 9e8e915c1765c4d4aa93b8f1f775effd
+  - enabled: 1
+    path: Assets/Vista/Scenes/Mision3.unity
+    guid: caa9c9addf3b434429b0958760240495
   m_configObjects: {}

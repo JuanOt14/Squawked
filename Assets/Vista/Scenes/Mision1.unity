@@ -2391,6 +2391,8 @@ MonoBehaviour:
   confeti: {fileID: 26415730}
   conversacion: {fileID: 764569416}
   objetoEntregadoCorrecto: 0
+  siguienteEscena: Mision2
+  tiempoEsperaCambioEscena: 5
 --- !u!1001 &399751069
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9294,11 +9296,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 6584613354768528393, guid: bae26acf817c6dc4e82f95d9ef4ab46a, type: 3}
   m_PrefabInstance: {fileID: 1693685792}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1694315416 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7175724820082051869, guid: b3dba7e3e90e0fa44a97f3046d5bcf3b, type: 3}
-  m_PrefabInstance: {fileID: 1773389340}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1728004913
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9800,28 +9797,13 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 7175724820082051869, guid: b3dba7e3e90e0fa44a97f3046d5bcf3b, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1773389342}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b3dba7e3e90e0fa44a97f3046d5bcf3b, type: 3}
 --- !u!4 &1773389341 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7556647752428523943, guid: b3dba7e3e90e0fa44a97f3046d5bcf3b, type: 3}
   m_PrefabInstance: {fileID: 1773389340}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1773389342
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1694315416}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dd69b81a267aedb4e83873e417d38a4b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &1791657416
 PrefabInstance:
   m_ObjectHideFlags: 0

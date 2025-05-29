@@ -19,6 +19,10 @@ public class ValidarObjetoMS2 : MonoBehaviour
 
     public bool objetoEntregadoCorrecto = false;
 
+    [Header("Transición de escena")]
+    public string siguienteEscena = "NombreDeLaSiguienteEscena"; // Escoge la escena a la que quieres pasar
+    public float tiempoEsperaCambioEscena = 5f; // Tiempo de espera antes del cambio
+
     private void Start()
     {
         if (imagenExito != null) imagenExito.SetActive(false);
@@ -91,11 +95,15 @@ public class ValidarObjetoMS2 : MonoBehaviour
         // Llama al ConfetiManager para mostrar el confeti durante 5 segundos
         ConfetiManager.Instance?.MostrarConfeti(5f);
 
-        GameManager.Instance.AddFeather();
-
-        yield return new WaitForSeconds(5f);
+        yield return new WaitForSeconds(tiempoEsperaCambioEscena);
 
         if (imagenExito != null) imagenExito.SetActive(false);
+
+        // Cambia de escena después de la espera
+        if (!string.IsNullOrEmpty(siguienteEscena))
+        {
+            UnityEngine.SceneManagement.SceneManager.LoadScene(siguienteEscena);
+        }
     }
 
     private IEnumerator MostrarError()

@@ -2528,6 +2528,8 @@ MonoBehaviour:
   confeti: {fileID: 693253659}
   conversacion: {fileID: 734817753}
   objetoEntregadoCorrecto: 0
+  siguienteEscena: 01 -Mision04
+  tiempoEsperaCambioEscena: 5
 --- !u!1001 &406775611
 PrefabInstance:
   m_ObjectHideFlags: 0

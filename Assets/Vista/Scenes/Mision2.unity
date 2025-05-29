@@ -2935,6 +2935,8 @@ MonoBehaviour:
   confeti: {fileID: 971544742}
   conversacion: {fileID: 1712234887}
   objetoEntregadoCorrecto: 0
+  siguienteEscena: Mision3
+  tiempoEsperaCambioEscena: 5
 --- !u!1001 &406775611
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5167,6 +5169,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: -70.8
       objectReference: {fileID: 0}
+    - target: {fileID: 3621752039503614743, guid: 8d294180babbc334ba874b076af92a0e, type: 3}
+      propertyPath: m_Constraints
+      value: 80
+      objectReference: {fileID: 0}
     - target: {fileID: 5029392004072950138, guid: 8d294180babbc334ba874b076af92a0e, type: 3}
       propertyPath: m_Name
       value: PatoControladorM Variant
@@ -5554,7 +5560,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 6126287937e9f46469ace071ab6efa86, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -18.43
+      value: -15.12
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 6126287937e9f46469ace071ab6efa86, type: 3}
       propertyPath: m_LocalPosition.y
@@ -5562,7 +5568,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 6126287937e9f46469ace071ab6efa86, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 38.08
+      value: 18.68
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 6126287937e9f46469ace071ab6efa86, type: 3}
       propertyPath: m_LocalRotation.w

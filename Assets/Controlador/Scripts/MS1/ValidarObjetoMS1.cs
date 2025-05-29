@@ -2,8 +2,6 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement; // Necesario para manejar escenas
 
-
-
 public class ValidarObjetoMS1 : MonoBehaviour
 {
     public string objetoCorrecto = "key2";
@@ -13,6 +11,10 @@ public class ValidarObjetoMS1 : MonoBehaviour
     public ActivarConversacion conversacion; // Asigna el script desde el Inspector
 
     public bool objetoEntregadoCorrecto = false; // <-- AGREGA ESTA LÍNEA
+
+    [Header("Transición de escena")]
+    public string siguienteEscena = "NombreDeLaSiguienteEscena"; // Escoge la escena a la que quieres pasar
+    public float tiempoEsperaCambioEscena = 5f; // Tiempo de espera antes del cambio
 
     private void Start()
     {
@@ -55,9 +57,15 @@ public class ValidarObjetoMS1 : MonoBehaviour
 
         GameManager.Instance.AddFeather();
 
-        yield return new WaitForSeconds(5f);
+        yield return new WaitForSeconds(tiempoEsperaCambioEscena);
 
         if (imagenExito != null) imagenExito.SetActive(false);
+
+        // Cambia de escena después de la espera
+        if (!string.IsNullOrEmpty(siguienteEscena))
+        {
+            SceneManager.LoadScene(siguienteEscena);
+        }
     }
 
     private IEnumerator MostrarError()
