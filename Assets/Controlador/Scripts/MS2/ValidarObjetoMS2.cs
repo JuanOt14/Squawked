@@ -4,10 +4,13 @@ using UnityEngine.SceneManagement; // Necesario para manejar escenas
 
 public class ValidarObjetoMS2 : MonoBehaviour
 {
-    [Header("Nombres de objetos correctos según el audio")]
+    [Header("Nombres de objetos correctos segï¿½n el audio")]
     public string objetoCorrectoAudio1;
     public string objetoCorrectoAudio2;
     public string objetoCorrectoAudio3;
+
+    [Header("Referencias de animaciï¿½n")]
+    public CityPeople.CityPeople cityPeople; // Asigna el CityPeople desde el Inspector
 
     public GameObject imagenExito;
     public GameObject imagenError;
@@ -15,6 +18,10 @@ public class ValidarObjetoMS2 : MonoBehaviour
     public ActConvMS2 conversacion; // Asigna el script desde el Inspector
 
     public bool objetoEntregadoCorrecto = false;
+
+    [Header("TransiciÃ³n de escena")]
+    public string siguienteEscena = "NombreDeLaSiguienteEscena"; // Escoge la escena a la que quieres pasar
+    public float tiempoEsperaCambioEscena = 5f; // Tiempo de espera antes del cambio
 
     private void Start()
     {
@@ -27,13 +34,13 @@ public class ValidarObjetoMS2 : MonoBehaviour
     {
         if (!conversacion.conversacionTerminada)
         {
-            Debug.Log("No puedes entregar objetos hasta terminar la conversación.");
+            Debug.Log("No puedes entregar objetos hasta terminar la conversaciï¿½n.");
             return;
         }
 
         if (other.CompareTag("Objeto"))
         {
-            // Validar el objeto según el audio seleccionado
+            // Validar el objeto segï¿½n el audio seleccionado
             if (conversacion.tipoAudioSeleccionado.HasValue)
             {
                 bool objetoCorrectoSegunAudio = false;
@@ -53,18 +60,28 @@ public class ValidarObjetoMS2 : MonoBehaviour
                 if (objetoCorrectoSegunAudio)
                 {
                     objetoEntregadoCorrecto = true;
-                    Debug.Log("¡Objeto correcto entregado para el audio!");
+                    Debug.Log("ï¿½Objeto correcto entregado para el audio!");
+                    // Llama a la animaciï¿½n de festejo
+                    if (cityPeople != null)
+                    {
+                        cityPeople.PlayCelebrationAnimation();
+                    }
                     StartCoroutine(MostrarExito());
                 }
                 else
                 {
                     Debug.Log("Objeto incorrecto entregado para el audio.");
+                    // Llama a la animaciï¿½n de error
+                    if (cityPeople != null)
+                    {
+                        cityPeople.PlayErrorAnimation();
+                    }
                     StartCoroutine(MostrarError());
                 }
             }
             else
             {
-                Debug.LogWarning("No se ha seleccionado ningún audio.");
+                Debug.LogWarning("No se ha seleccionado ningï¿½n audio.");
                 StartCoroutine(MostrarError());
             }
             Destroy(other.gameObject);
@@ -78,9 +95,15 @@ public class ValidarObjetoMS2 : MonoBehaviour
         // Llama al ConfetiManager para mostrar el confeti durante 5 segundos
         ConfetiManager.Instance?.MostrarConfeti(5f);
 
-        yield return new WaitForSeconds(5f);
+        yield return new WaitForSeconds(tiempoEsperaCambioEscena);
 
         if (imagenExito != null) imagenExito.SetActive(false);
+
+        // Cambia de escena despuÃ©s de la espera
+        if (!string.IsNullOrEmpty(siguienteEscena))
+        {
+            UnityEngine.SceneManagement.SceneManager.LoadScene(siguienteEscena);
+        }
     }
 
     private IEnumerator MostrarError()

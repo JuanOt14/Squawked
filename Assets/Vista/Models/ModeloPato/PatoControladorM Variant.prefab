@@ -12,6 +12,10 @@ PrefabInstance:
       propertyPath: m_audioClip
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 2076579747890229272, guid: 7b3e84f5077710d47ba3295adab8689c, type: 3}
+      propertyPath: m_Constraints
+      value: 80
+      objectReference: {fileID: 0}
     - target: {fileID: 6184400774724193564, guid: 7b3e84f5077710d47ba3295adab8689c, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.1
@@ -106,7 +110,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   conversaciones: []
-  npc1: {fileID: 0}
-  npc2: {fileID: 0}
-  rangoActivacion: 3
+  audioSource: {fileID: 0}
   maxReproducciones: 3
+  conversacionTerminada: 0
