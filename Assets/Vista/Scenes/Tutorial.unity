@@ -342,6 +342,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 595542019337776357, guid: 7b3e84f5077710d47ba3295adab8689c, type: 3}
+      propertyPath: cuackSound
+      value: 
+      objectReference: {fileID: 8300000, guid: e24772f0c18173e4ba0bc35d9d3ca019, type: 3}
     - target: {fileID: 6184400774724193564, guid: 7b3e84f5077710d47ba3295adab8689c, type: 3}
       propertyPath: m_LocalPosition.x
       value: 1.42
@@ -1651,7 +1655,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 923d949210b7eee478bcbee53c167605, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cuackSound: {fileID: 8300000, guid: bb8251d83b184f64abaa6950c7b717bd, type: 3}
+  cuackSound: {fileID: 8300000, guid: e24772f0c18173e4ba0bc35d9d3ca019, type: 3}
 --- !u!1 &1282957287
 GameObject:
   m_ObjectHideFlags: 0

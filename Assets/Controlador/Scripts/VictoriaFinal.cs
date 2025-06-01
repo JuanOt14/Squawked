@@ -11,12 +11,7 @@ public class VictoriaFinal : MonoBehaviour
     public VideoClip videoVictoria;
     public VideoClip videoError;
 
-    void Start()
-    {
-        GetComponent<Button>().onClick.AddListener(VerificarConexiones);
-    }
-
-    void VerificarConexiones()
+    public void VerificarConexiones()
     {
         bool todasCorrectas = true;
         foreach (var casilla in casillas)

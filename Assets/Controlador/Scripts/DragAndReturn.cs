@@ -42,6 +42,12 @@ public class DragAndReturn : MonoBehaviour, IPointerDownHandler, IPointerUpHandl
 
         isDragging = true;
 
+        // Guardar la posición original solo si no está en una casilla
+        if (casillaActual == null)
+        {
+            originalPosition = rectTransform.anchoredPosition;
+        }
+
         // Si estaba en una casilla, liberarla
         if (casillaActual != null)
         {
@@ -57,7 +63,6 @@ public class DragAndReturn : MonoBehaviour, IPointerDownHandler, IPointerUpHandl
             out var localPoint
         );
 
-        // Calcular el offset correctamente
         pointerOffset = localPoint - rectTransform.anchoredPosition;
     }
 
