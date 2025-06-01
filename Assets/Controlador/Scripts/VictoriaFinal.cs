@@ -1,15 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 using UnityEngine.Video;
 
 public class VictoriaFinal : MonoBehaviour
 {
     public List<Casilla> casillas; // Asigna todas las casillas desde el inspector
-    public VideoPlayer videoPlayer;
-    public VideoClip videoVictoria;
-    public VideoClip videoError;
+    public string escenaVictoria;  // Nombre de la escena a cargar si es correcto
+    public string escenaError;     // Nombre de la escena a cargar si es incorrecto
 
     public void VerificarConexiones()
     {
@@ -25,12 +24,13 @@ public class VictoriaFinal : MonoBehaviour
 
         if (todasCorrectas)
         {
-            videoPlayer.clip = videoVictoria;
+            if (!string.IsNullOrEmpty(escenaVictoria))
+                SceneManager.LoadScene(escenaVictoria);
         }
         else
         {
-            videoPlayer.clip = videoError;
+            if (!string.IsNullOrEmpty(escenaError))
+                SceneManager.LoadScene(escenaError);
         }
-        videoPlayer.Play();
     }
 }

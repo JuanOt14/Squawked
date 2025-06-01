@@ -47,4 +47,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Vista/Scenes/Mision3.unity
     guid: caa9c9addf3b434429b0958760240495
+  - enabled: 1
+    path: Assets/Vista/Scenes/VideoD.unity
+    guid: 26f8e90eb94efb347a514c8fa5186765
+  - enabled: 1
+    path: Assets/Vista/Scenes/VideoV.unity
+    guid: 4b7bce42c3343f14ea5cc457bc375da3
   m_configObjects: {}
