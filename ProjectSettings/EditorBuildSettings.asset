@@ -53,4 +53,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Vista/Scenes/VideoV.unity
     guid: 4b7bce42c3343f14ea5cc457bc375da3
+  - enabled: 1
+    path: Assets/Vista/Scenes/Mision6 Interior.unity
+    guid: d8e85ec7cf9118a4291b061a6832f541
   m_configObjects: {}

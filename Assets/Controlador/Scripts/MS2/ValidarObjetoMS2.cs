@@ -95,6 +95,8 @@ public class ValidarObjetoMS2 : MonoBehaviour
         // Llama al ConfetiManager para mostrar el confeti durante 5 segundos
         ConfetiManager.Instance?.MostrarConfeti(5f);
 
+        GameManager.Instance.AddFeather();
+
         yield return new WaitForSeconds(tiempoEsperaCambioEscena);
 
         if (imagenExito != null) imagenExito.SetActive(false);

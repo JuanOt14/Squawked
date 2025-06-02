@@ -151,6 +151,7 @@ public class ControlConversacion : MonoBehaviour
     {
         yield return new WaitForSeconds(segundos);
         if (mensaje != null) mensaje.SetActive(false);
+        UnityEngine.SceneManagement.SceneManager.LoadScene("Mision6 Interior");
     }
 
     private void ActivarBorde(GameObject npc, Color color)

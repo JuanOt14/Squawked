@@ -10,6 +10,7 @@ public class Victoria : MonoBehaviour
     
     public void ComprobarVictoria(){
         if(conexionesVictoria == 6){
+            GameManager.Instance.AddFeather();
             Destroy(this.gameObject, 1f);
             SceneManager.LoadScene("Mision5");
         }
